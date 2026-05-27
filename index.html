@@ -3,29 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Tadesse Birara Akele | eLearning Director & Lecturer</title>
-    <!-- Bootstrap 5 + Icons + Fonts -->
+    <title>Tadesse Birara Akele | Lecturer & eLearning Director</title>
+    <meta name="description" content="Personal academic website of Tadesse Birara Akele — Lecturer and Director of eLearning Administration at Wollo University, Ethiopia.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Favicon: T letter icon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%232d6a4f'/%3E%3Ctext x='50' y='72' font-size='64' text-anchor='middle' fill='white' font-family='Arial, sans-serif' font-weight='bold'%3ET%3C/text%3E%3C/svg%3E">
     <style>
+        :root {
+            --green-dark: #1a4b2e;
+            --green-mid: #2c9f57;
+            --green-light: #48b97a;
+            --green-bg: #f4faf0;
+            --green-card-border: #e2efdc;
+            --text-primary: #1a2e1f;
+            --text-muted: #4f7358;
+            --card-bg: #ffffff;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.03);
+            --shadow-hover: 0 18px 28px -12px rgba(40,80,50,0.18);
+            --radius-lg: 1.5rem;
+            --radius-sm: 0.75rem;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        [data-theme="dark"] {
+            --green-dark: #6bc48a;
+            --green-mid: #4cd07a;
+            --green-light: #7de0a0;
+            --green-bg: #0f1a12;
+            --green-card-border: #1e3826;
+            --text-primary: #dceadd;
+            --text-muted: #9bb8a3;
+            --card-bg: #16231a;
+            --shadow-sm: 0 8px 20px rgba(0,0,0,0.3);
+            --shadow-hover: 0 18px 28px -12px rgba(0,0,0,0.5);
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            background: #f4faf0;
-            color: #1a2e1f;
+            background: var(--green-bg);
+            color: var(--text-primary);
             scroll-behavior: smooth;
+            transition: background 0.4s, color 0.4s;
         }
+        ::selection { background: var(--green-light); color: #fff; }
+        a { color: var(--green-mid); transition: var(--transition); }
+        a:hover { color: var(--green-dark); }
+
         .navbar {
-            background: white;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            background: var(--card-bg);
+            box-shadow: var(--shadow-sm);
             padding: 0.7rem 0;
-            border-bottom: 1px solid #e0ecda;
+            border-bottom: 1px solid var(--green-card-border);
             position: sticky;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(12px);
+            transition: background 0.4s;
         }
         .logo-container { display: flex; align-items: center; gap: 10px; }
         .logo-icon {
@@ -44,164 +77,270 @@
             letter-spacing: -0.3px;
         }
         .nav-link {
-            font-weight: 500; color: #2d4a33;
-            margin: 0 0.2rem; transition: 0.2s;
-            border-radius: 30px;
+            font-weight: 500; color: var(--text-primary);
+            margin: 0 0.2rem; transition: var(--transition);
+            border-radius: 30px; position: relative;
         }
-        .nav-link:hover, .nav-link.active { color: #1f8548; background: #eef5ea; }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: 4px; left: 50%;
+            width: 0; height: 2px; background: var(--green-mid);
+            transition: var(--transition); transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after { width: 60%; }
+        .nav-link:hover, .nav-link.active { color: var(--green-mid); }
+
+        #themeToggle {
+            background: var(--green-bg);
+            border: 1px solid var(--green-card-border);
+            border-radius: 50%;
+            width: 38px; height: 38px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-primary);
+            cursor: pointer; transition: var(--transition);
+        }
+        #themeToggle:hover {
+            background: var(--green-mid);
+            color: white;
+            transform: rotate(20deg);
+        }
+
         .hero-section {
-            background: linear-gradient(120deg, #ffffff 0%, #f2f9ef 100%);
+            background: linear-gradient(120deg, var(--card-bg) 0%, var(--green-bg) 100%);
             padding: 2.5rem 0 2rem;
             border-radius: 0 0 2rem 2rem;
             margin-bottom: 2rem;
+            transition: background 0.4s;
         }
         .hero-info h1 {
             font-size: 3rem; font-weight: 800;
-            background: linear-gradient(130deg, #1a4b2e, #2c9f57);
+            background: linear-gradient(130deg, var(--green-dark), var(--green-mid));
             background-clip: text; -webkit-background-clip: text;
             color: transparent;
         }
         .hero-tagline {
-            font-size: 1.2rem; font-weight: 500; color: #2e7d53;
-            border-left: 4px solid #48b97a; padding-left: 1rem;
+            font-size: 1.2rem; font-weight: 500; color: var(--green-mid);
+            border-left: 4px solid var(--green-light); padding-left: 1rem;
         }
         .contact-badge {
-            background: #e9f3e5; padding: 0.4rem 1rem; border-radius: 40px;
+            background: var(--green-bg);
+            padding: 0.4rem 1rem; border-radius: 40px;
             display: inline-flex; align-items: center; gap: 0.5rem;
-            font-size: 0.8rem; color: #246b3e; text-decoration: none;
-            transition: 0.2s;
+            font-size: 0.8rem; color: var(--text-primary); text-decoration: none;
+            transition: var(--transition); border: 1px solid transparent;
         }
-        .contact-badge:hover { background: #dcf0d4; transform: translateY(-2px); }
-        .profile-img {
-            width: 150px; height: 150px; object-fit: cover;
-            border-radius: 50%; border: 4px solid white;
-            box-shadow: 0 20px 30px rgba(52,92,58,0.1);
-            background: #e0f0db;
-        }
+        .contact-badge:hover { border-color: var(--green-light); transform: translateY(-2px); }
+
         .avatar-circle {
-            background: linear-gradient(145deg, #e0f0db, #cee6cb);
-            width: 150px; height: 150px; border-radius: 50%;
+            background: linear-gradient(145deg, var(--green-bg), #cee6cb);
+            width: 165px; height: 165px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             box-shadow: 0 20px 30px rgba(52,92,58,0.1);
-            border: 4px solid white;
-            overflow: hidden;
+            border: 4px solid var(--card-bg);
+            overflow: hidden; position: relative;
         }
+        .avatar-circle img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .avatar-fallback {
+            display: none;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, #1f5e3a, #2c9b54);
+            color: white; font-size: 4rem; font-weight: 800;
+            align-items: center; justify-content: center;
+        }
+
         .feature-card {
-            background: white; border-radius: 1.5rem; padding: 1.8rem;
-            transition: all 0.25s; border: 1px solid #e2efdc;
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 1.8rem;
+            transition: var(--transition);
+            border: 1px solid var(--green-card-border);
             height: 100%; display: flex; flex-direction: column;
         }
-        .feature-card:hover { transform: translateY(-6px); box-shadow: 0 18px 28px -12px rgba(40,80,50,0.18); }
-        .feature-icon { font-size: 2.2rem; color: #308a52; margin-bottom: 1rem; }
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+        .feature-icon { font-size: 2.2rem; color: var(--green-mid); margin-bottom: 1rem; }
         .btn-learn-more {
             align-self: flex-start; background: none; border: none;
-            color: #308a52; font-weight: 600; font-size: 0.85rem;
-            transition: 0.2s;
+            color: var(--green-mid); font-weight: 600; font-size: 0.85rem;
+            transition: var(--transition); padding: 0;
         }
-        .btn-learn-more:hover { color: #1b5e38; transform: translateX(4px); }
+        .btn-learn-more:hover { color: var(--green-dark); transform: translateX(4px); }
+
         .section-title {
-            font-size: 1.6rem; font-weight: 700; margin-bottom: 1.2rem;
-            border-left: 5px solid #329b5b; padding-left: 1rem;
-            color: #1a442b;
+            font-size: 1.5rem; font-weight: 700; margin-bottom: 1.2rem;
+            border-left: 5px solid var(--green-mid); padding-left: 1rem;
+            color: var(--text-primary);
         }
+
         .card-custom {
-            background: white; border-radius: 1.5rem; padding: 1.5rem;
-            margin-bottom: 1.8rem; border: 1px solid #eaf1e5;
-            height: auto;
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 1.8rem;
+            border: 1px solid var(--green-card-border);
+            transition: background 0.4s, border-color 0.4s;
         }
-        .job-header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; }
-        .job-title { font-weight: 700; color: #1f7543; font-size: 1.05rem; }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 1.8rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute; left: 0; top: 6px;
+            width: 10px; height: 10px;
+            background: var(--green-mid);
+            border-radius: 50%;
+            border: 2px solid var(--card-bg);
+            box-shadow: 0 0 0 2px var(--green-light);
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute; left: 4px; top: 20px;
+            width: 2px; height: calc(100% - 10px);
+            background: var(--green-card-border);
+        }
+        .timeline-item:last-child::after { display: none; }
+        .job-title { font-weight: 700; color: var(--green-dark); font-size: 1.05rem; }
         .date-badge {
-            background: #ecf6e8; padding: 0.2rem 0.8rem; border-radius: 40px;
-            font-size: 0.7rem; font-weight: 600; color: #2c7840;
+            background: var(--green-bg);
+            padding: 0.2rem 0.8rem; border-radius: 40px;
+            font-size: 0.7rem; font-weight: 600; color: var(--green-mid);
+            white-space: nowrap;
         }
-        .company { font-weight: 500; color: #4f7358; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .company { font-weight: 500; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem; }
         .desc-list { padding-left: 1.2rem; margin-top: 0.4rem; }
         .desc-list li { margin-bottom: 0.3rem; font-size: 0.88rem; }
+
         .skill-tag {
-            background: #eef5ea; padding: 0.25rem 1rem; border-radius: 40px;
+            background: var(--green-bg);
+            padding: 0.25rem 1rem; border-radius: 40px;
             font-size: 0.75rem; font-weight: 500; display: inline-block;
-            margin: 0.2rem; color: #225c38;
+            margin: 0.2rem; color: var(--text-primary);
+            border: 1px solid transparent; transition: var(--transition);
         }
+        .skill-tag:hover { border-color: var(--green-light); transform: scale(1.05); }
+
         .lang-badge {
-            background: white; border: 1px solid #c6e0bd; border-radius: 40px;
-            padding: 0.25rem 1.2rem; display: inline-block; margin-right: 0.6rem;
-            margin-bottom: 0.5rem; font-weight: 500; font-size: 0.85rem;
+            background: var(--card-bg);
+            border: 1px solid var(--green-card-border);
+            border-radius: 40px;
+            padding: 0.25rem 1.2rem; display: inline-block;
+            margin-right: 0.6rem; margin-bottom: 0.5rem;
+            font-weight: 500; font-size: 0.85rem;
         }
+
         .publication-item {
-            border-bottom: 1px solid #eef3e9;
-            padding-bottom: 0.8rem;
-            margin-bottom: 0.8rem;
+            border-bottom: 1px solid var(--green-card-border);
+            padding-bottom: 0.8rem; margin-bottom: 0.8rem;
+            transition: var(--transition);
+        }
+        .publication-item:hover {
+            padding-left: 0.5rem;
         }
         .pub-title {
-            font-weight: 700;
-            font-size: 0.95rem;
+            font-weight: 700; font-size: 0.95rem;
         }
         .pub-title a {
-            text-decoration: none;
-            color: #1f7543;
-            transition: 0.2s;
+            text-decoration: none; color: var(--green-dark);
+            transition: var(--transition);
         }
-        .pub-title a:hover {
-            color: #0e4a2a;
-            text-decoration: underline;
-        }
-        .pub-link-icon {
-            margin-left: 6px;
-            font-size: 0.7rem;
-            color: #2f9b58;
-        }
+        .pub-title a:hover { color: var(--green-mid); }
+        .pub-link-icon { margin-left: 6px; font-size: 0.7rem; color: var(--green-mid); }
+
         footer {
-            background: #1c2c1e; color: #cadfc1;
-            border-radius: 2rem 2rem 0 0; padding: 1.8rem;
+            background: var(--card-bg);
+            border-top: 1px solid var(--green-card-border);
+            color: var(--text-muted);
+            border-radius: 2rem 2rem 0 0;
+            padding: 1.8rem;
             margin-top: 2rem;
+            transition: background 0.4s;
         }
-        .image-upload-hint {
-            font-size: 0.7rem;
-            margin-top: 8px;
-            text-align: center;
-            color: #2d6a4f;
+
+        #backToTop {
+            position: fixed; bottom: 2rem; right: 2rem;
+            width: 46px; height: 46px;
+            background: var(--green-mid); color: white;
+            border: none; border-radius: 50%;
+            font-size: 1.2rem;
+            box-shadow: 0 6px 16px rgba(44,159,87,0.3);
+            cursor: pointer; opacity: 0; visibility: hidden;
+            transition: var(--transition); z-index: 999;
         }
+        #backToTop.show { opacity: 1; visibility: visible; }
+        #backToTop:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(44,159,87,0.4); }
+
+        .reveal {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
         @media (max-width: 768px) {
             .hero-info h1 { font-size: 2rem; }
-            .section-title { font-size: 1.4rem; }
+            .section-title { font-size: 1.3rem; }
+            #backToTop { bottom: 1.2rem; right: 1.2rem; width: 40px; height: 40px; }
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--green-card-border);
+        }
+        .modal-header { border-color: var(--green-card-border); }
+        .modal-footer { border-color: var(--green-card-border); }
+        .btn-close {
+            filter: var(--text-primary) === '#dceadd' ? invert(1) : none;
         }
     </style>
 </head>
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg sticky-top">
+<nav class="navbar navbar-expand-lg" role="navigation" aria-label="Main navigation">
     <div class="container">
         <div class="logo-container">
-            <div class="logo-icon">T</div>
-            <a class="navbar-brand" href="#">adesse Birara</a>
+            <div class="logo-icon" aria-hidden="true">T</div>
+            <a class="navbar-brand" href="#home">adesse Birara</a>
         </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto gap-2">
-                <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+            <ul class="navbar-nav ms-auto gap-2 align-items-center">
+                <li class="nav-item"><a class="nav-link active" href="#home" aria-current="page">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#bio">Bio</a></li>
                 <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
                 <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
                 <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                <li class="nav-item">
+                    <button id="themeToggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- Hero Section with Profile Image -->
-<section id="home">
+<!-- Hero -->
+<section id="home" aria-label="Hero">
     <div class="hero-section">
         <div class="container">
             <div class="row align-items-center g-4">
                 <div class="col-md-8">
-                    <div class="hero-info">
+                    <div class="hero-info reveal">
                         <h1>Tadesse Birara Akele</h1>
-                        <div class="hero-tagline mt-2">Lecturer & Director of eLearning Administration</div>
+                        <div class="hero-tagline mt-2">Lecturer &amp; Director of eLearning Administration</div>
                         <div class="d-flex flex-wrap gap-2 mt-3">
                             <span class="contact-badge"><i class="fas fa-envelope"></i> tadesse.birara@wu.edu.et</span>
                             <span class="contact-badge"><i class="fas fa-phone-alt"></i> +251928363839</span>
@@ -210,11 +349,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 text-center">
-                    <div class="avatar-circle mx-auto">
-                        <img src="https://drive.google.com/thumbnail?id=1G3LBFb9i4VPiFs_p2CaqmI8oQpl1gJlc&sz=w500" alt="Tadesse Birara" class="profile-img" id="profileImg">
+                <div class="col-md-4 text-center reveal">
+                    <div class="avatar-circle mx-auto" role="img" aria-label="Profile photo of Tadesse Birara">
+                        <img src="https://drive.google.com/thumbnail?id=1G3LBFb9i4VPiFs_p2CaqmI8oQpl1gJlc&sz=w500"
+                             alt="Tadesse Birara" id="profileImg"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="avatar-fallback">TB</div>
                     </div>
-                    
                 </div>
             </div>
         </div>
@@ -224,15 +365,15 @@
 <div class="container">
     <!-- Feature Cards -->
     <div class="row g-4 mb-5">
-        <div class="col-md-4">
+        <div class="col-md-4 reveal">
             <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
                 <h4>Academic Background</h4>
-                <p>Advanced degrees in Computer Networks & Information Systems with Very Great Distinction.</p>
+                <p>Advanced degrees in Computer Networks &amp; Information Systems with Very Great Distinction.</p>
                 <button class="btn-learn-more" data-bs-toggle="modal" data-bs-target="#academicModal">Learn More <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 reveal">
             <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-chalkboard-user"></i></div>
                 <h4>Professional Impact</h4>
@@ -240,10 +381,10 @@
                 <button class="btn-learn-more" data-bs-toggle="modal" data-bs-target="#impactModal">Learn More <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 reveal">
             <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-flask"></i></div>
-                <h4>Research & Publications</h4>
+                <h4>Research &amp; Publications</h4>
                 <p>Contributing to cybersecurity, AI, and cryptography research fields globally.</p>
                 <button class="btn-learn-more" data-bs-toggle="modal" data-bs-target="#researchModal">Learn More <i class="fas fa-arrow-right"></i></button>
             </div>
@@ -253,63 +394,116 @@
     <!-- Two Columns -->
     <div class="row g-4">
         <div class="col-lg-6">
-            <div id="bio" class="card-custom">
+            <!-- Bio -->
+            <div id="bio" class="card-custom reveal">
                 <div class="section-title"><i class="fas fa-user-graduate me-2"></i> Professional Bio</div>
                 <p>Accomplished academic professional with extensive experience in eLearning administration, lecturing, and research within Information Systems, IT, and Computer Science. Currently serving as the Director of eLearning Administration Directorate at Wollo University, with a strong background in developing web-based systems, conducting pedagogical training, and contributing to national digital transformation initiatives.</p>
                 <p class="mt-2">I am deeply committed to the digital transformation of higher education in Ethiopia. My work involves technical implementation and empowering educators with online learning tools.</p>
-                <div class="mt-3"><strong><i class="fas fa-language"></i> Linguistic Skills:</strong> 
+                <div class="mt-3"><strong><i class="fas fa-language"></i> Linguistic Skills:</strong>
                     <span class="lang-badge">Amharic</span> <span class="lang-badge">English</span> <span class="lang-badge">Tigrigna</span>
                 </div>
-                <div class="mt-2"><strong><i class="fas fa-chart-line"></i> Strategic Vision:</strong> Driving innovation in educational technology to bridge digital divides.</div>
+                <div class="mt-2"><strong><i class="fas fa-chart-line"></i> Strategic Vision:</strong> Driving innovation in Cyber Security, GIS, Data Science, AI, IoT, Reality, and Educational Technology to bridge digital divides.</div>
             </div>
 
-            <div id="experience" class="card-custom">
+            <!-- Experience -->
+            <div id="experience" class="card-custom reveal">
                 <div class="section-title"><i class="fas fa-briefcase me-2"></i> Work Experience</div>
-                <div class="mb-3">
-                    <div class="job-header"><span class="job-title">Director of eLearning Administration</span><span class="date-badge">Nov 2024 – Present</span></div>
+                <div class="timeline-item">
+                    <div class="d-flex flex-wrap justify-content-between align-items-start gap-1">
+                        <span class="job-title">Director of eLearning Administration</span>
+                        <span class="date-badge">Nov 2024 – Present</span>
+                    </div>
                     <div class="company">Wollo University, Dessie</div>
-                    <ul class="desc-list"><li>Coordinated training with Ministry of Education, ASU & Mastercard Foundation.</li><li>Led LMS design, development & implementation.</li><li>Contributed to eSHE initiative for digital transformation.</li></ul>
+                    <ul class="desc-list">
+                        <li>Coordinated training with Ministry of Education, ASU &amp; Mastercard Foundation.</li>
+                        <li>Led LMS design, development &amp; implementation.</li>
+                        <li>Contributed to eSHE initiative for digital transformation.</li>
+                    </ul>
                 </div>
-                <div class="mb-3">
-                    <div class="job-header"><span class="job-title">Lecturer</span><span class="date-badge">July 2021 – Present</span></div>
+                <div class="timeline-item">
+                    <div class="d-flex flex-wrap justify-content-between align-items-start gap-1">
+                        <span class="job-title">Lecturer</span>
+                        <span class="date-badge">July 2021 – Present</span>
+                    </div>
                     <div class="company">Wollo University, Dessie</div>
-                    <ul class="desc-list"><li>Teach Information Systems, IT, Computer Science.</li><li>Research in cybersecurity/AI, published in journals.</li><li>Develop web-based systems & supervise student projects.</li></ul>
+                    <ul class="desc-list">
+                        <li>Teach Information Systems, IT, Computer Science.</li>
+                        <li>Research in cybersecurity/AI, published in journals.</li>
+                        <li>Develop web-based systems &amp; supervise student projects.</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <div class="d-flex flex-wrap justify-content-between align-items-start gap-1">
+                        <span class="job-title">Assistant Lecturer / Teaching Assistant</span>
+                        <span class="date-badge">2017 – 2021</span>
+                    </div>
+                    <div class="company">Wollo University</div>
+                    <ul class="desc-list">
+                        <li>Lectures, curriculum design, mentorship, lab sessions.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Academic Journey -->
+            <div class="card-custom reveal">
+                <div class="section-title"><i class="fas fa-graduation-cap me-2"></i> Academic Journey</div>
+                <div class="mb-3">
+                    <strong>MSc in Computer Networks &amp; Communications</strong> <span class="date-badge">2019–2021</span><br>
+                    Wollo University &middot; cGPA 3.92/4.00 <strong>(Very Great Distinction)</strong>
                 </div>
                 <div>
-                    <div class="job-header"><span class="job-title">Assistant Lecturer / Teaching Assistant</span><span class="date-badge">2017 – 2021</span></div>
-                    <div class="company">Wollo University</div>
-                    <ul class="desc-list"><li>Lectures, curriculum design, mentorship, lab sessions.</li></ul>
+                    <strong>BSc in Information Systems</strong> <span class="date-badge">2013–2017</span><br>
+                    Mekelle University &middot; cGPA 3.76/4.00 <strong>(Very Great Distinction)</strong>
                 </div>
             </div>
 
-            <div class="card-custom">
-                <div class="section-title"><i class="fas fa-graduation-cap me-2"></i> Academic Journey</div>
-                <div class="mb-2"><strong>MSc in Computer Networks & Communications</strong> <span class="date-badge">2019–2021</span><br>Wollo University · cGPA 3.92/4.00 <strong>(Very Great Distinction)</strong></div>
-                <div><strong>BSc in Information Systems</strong> <span class="date-badge">2013–2017</span><br>Mekelle University · cGPA 3.76/4.00 <strong>(Very Great Distinction)</strong></div>
-            </div>
-
-            <div class="card-custom">
-                <div class="section-title"><i class="fas fa-medal me-2"></i> Awards & Certifications</div>
-                <div><span class="skill-tag">Grant Writing</span> <span class="skill-tag">Programming Fundamentals</span> <span class="skill-tag">Training of Trainers (iCog)</span> <span class="skill-tag">AI for Academic Writing</span> <span class="skill-tag">System Admin L1/L2 (ASU)</span> <span class="skill-tag">Master Class Online Teaching</span> <span class="skill-tag">Higher Diploma Program</span> <span class="skill-tag">Machine Learning</span> <span class="skill-tag">Advanced Programming Trainer</span> <span class="skill-tag">BunnaScript</span> <span class="skill-tag">Office Maintenance</span></div>
+            <!-- Awards -->
+            <div class="card-custom reveal">
+                <div class="section-title"><i class="fas fa-medal me-2"></i> Awards &amp; Certifications</div>
+                <div>
+                    <span class="skill-tag">Grant Writing</span>
+                    <span class="skill-tag">Programming Fundamentals</span>
+                    <span class="skill-tag">Training of Trainers (iCog)</span>
+                    <span class="skill-tag">AI for Academic Writing</span>
+                    <span class="skill-tag">System Admin L1/L2 (ASU)</span>
+                    <span class="skill-tag">Master Class Online Teaching</span>
+                    <span class="skill-tag">Higher Diploma Program</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Advanced Programming Trainer</span>
+                    <span class="skill-tag">BunnaScript</span>
+                    <span class="skill-tag">Office Maintenance</span>
+                </div>
             </div>
         </div>
 
         <div class="col-lg-6">
-            <div id="research" class="card-custom">
+            <!-- Research Grants -->
+            <div id="research" class="card-custom reveal">
                 <div class="section-title"><i class="fas fa-flask me-2"></i> Active Research Grants</div>
-                <p><strong>🔐 Ethiopic Cryptography:</strong> An Efficient Hybrid Encryption Algorithm for reducing cyber security attack.</p>
-                <p><strong>🧠 ECBA Framework:</strong> Designing Cybersecurity Behavior Assessment framework for Government Employees to Mitigate Attacks.</p>
+                <p><strong><i class="fas fa-shield-halved me-1"></i> Ethiopic Cryptography:</strong> An Efficient Hybrid Encryption Algorithm for reducing cyber security attack.</p>
+                <p><strong><i class="fas fa-brain me-1"></i> ECBA Framework:</strong> Designing Cybersecurity Behavior Assessment framework for Government Employees to Mitigate Attacks.</p>
             </div>
 
-            <div class="card-custom">
+            <!-- Technical Expertise -->
+            <div class="card-custom reveal">
                 <div class="section-title"><i class="fas fa-microchip me-2"></i> Technical Expertise</div>
-                <div><span class="skill-tag">HTML/CSS/JS</span> <span class="skill-tag">PHP</span> <span class="skill-tag">Python</span> <span class="skill-tag">Java</span> <span class="skill-tag">C/C++</span> <span class="skill-tag">MATLAB</span> <span class="skill-tag">Network Design</span> <span class="skill-tag">Android Dev</span> <span class="skill-tag">LMS Admin</span> <span class="skill-tag">MySQL/Git</span></div>
+                <div>
+                    <span class="skill-tag">HTML/CSS/JS</span>
+                    <span class="skill-tag">PHP</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">C/C++</span>
+                    <span class="skill-tag">MATLAB</span>
+                    <span class="skill-tag">Network Design</span>
+                    <span class="skill-tag">Android Dev</span>
+                    <span class="skill-tag">LMS Admin</span>
+                    <span class="skill-tag">MySQL/Git</span>
+                </div>
             </div>
 
-            <!-- PUBLICATIONS SECTION - Now with validated links to journals/publishers -->
-            <div id="publications" class="card-custom">
+            <!-- Publications -->
+            <div id="publications" class="card-custom reveal">
                 <div class="section-title"><i class="fas fa-book-open me-2"></i> Research Publications</div>
-                
                 <div class="publication-item">
                     <div class="pub-title"><a href="https://doi.org/10.1007/978-3-031-64151-0_17" target="_blank" rel="noopener noreferrer">Ethiopic Cryptography: An Efficient Hybrid Encryption Algorithm for Reducing Cybersecurity Attack <i class="fas fa-external-link-alt pub-link-icon"></i></a></div>
                     <div class="small text-secondary">Akele, T.B. et al. (2025). Springer, ICAST 2023.</div>
@@ -340,66 +534,159 @@
                 </div>
             </div>
 
-            <div class="card-custom">
+            <!-- Committee -->
+            <div class="card-custom reveal">
                 <div class="section-title"><i class="fas fa-users me-2"></i> Committee Services</div>
-                <ul class="ps-3 mb-0">
-                    <li>Staff hiring Committee (2019-2020)</li>
-                    <li>Curriculum Review Committee (2023)</li>
-                    <li>Exam review Committee (2019-2020)</li>
-                    <li>DC Committee (2018–present)</li>
-                    <li>Discipline Committee (2023–present)</li>
+                <ul class="mb-0" style="list-style: none; padding-left: 0;">
+                    <li class="py-1"><i class="fas fa-check-circle text-success me-2" style="font-size: 0.85rem;"></i>Staff hiring Committee (2019-2020)</li>
+                    <li class="py-1"><i class="fas fa-check-circle text-success me-2" style="font-size: 0.85rem;"></i>Curriculum Review Committee (2023)</li>
+                    <li class="py-1"><i class="fas fa-check-circle text-success me-2" style="font-size: 0.85rem;"></i>Exam review Committee (2019-2020)</li>
+                    <li class="py-1"><i class="fas fa-check-circle text-success me-2" style="font-size: 0.85rem;"></i>DC Committee (2018–present)</li>
+                    <li class="py-1"><i class="fas fa-check-circle text-success me-2" style="font-size: 0.85rem;"></i>Discipline Committee (2023–present)</li>
                 </ul>
             </div>
 
-            <div id="contact" class="card-custom">
+            <!-- Contact -->
+            <div id="contact" class="card-custom reveal">
                 <div class="section-title"><i class="fas fa-address-card me-2"></i> Get in Touch</div>
-                <p><i class="fas fa-phone-alt me-2 text-success"></i> +251 928363839<br>
-                <i class="fas fa-envelope me-2 text-success"></i> tadesse.birara@wu.edu.et | tadese@kiot.edu.et<br>
-                <i class="fas fa-map-marker-alt me-2 text-success"></i> 5232, Piassa Road, Dessie, 1145, Ethiopia<br>
-                <i class="fab fa-orcid me-2 text-success"></i> 0000-0001-8101-8816</p>
-                <p class="mt-2">For academic collaborations or research inquiries.</p>
+                <p>
+                    <i class="fas fa-phone-alt me-2" style="color: var(--green-mid);"></i> +251 928363839<br>
+                    <i class="fas fa-envelope me-2" style="color: var(--green-mid);"></i> tadesse.birara@wu.edu.et | tadese@kiot.edu.et<br>
+                    <i class="fas fa-map-marker-alt me-2" style="color: var(--green-mid);"></i> 5232, Piassa Road, Dessie, 1145, Ethiopia<br>
+                    <i class="fab fa-orcid me-2" style="color: var(--green-mid);"></i> 0000-0001-8101-8816
+                </p>
+                <p class="mt-2 mb-0">For academic collaborations or research inquiries.</p>
             </div>
         </div>
     </div>
 
-    <div class="card-custom mt-2">
-        <div class="section-title"><i class="fas fa-globe me-2"></i> Driving Innovation in eLearning</div>
-        <p>As Director of eLearning Administration at Wollo University, I actively shape national digital education strategies, partner with Arizona State University & Mastercard Foundation, and foster academic collaboration from Ethiopia to the globe. My research in cryptographic security and AI continues to influence modern cybersecurity applications.</p>
+    <!-- Callout -->
+    <div class="card-custom mt-2 reveal">
+        <div class="section-title"><i class="fas fa-globe me-2"></i> Driving Innovation in Emerging Technologies</div>
+        <p class="mb-0">As Director of eLearning Administration at Wollo University, I actively drive innovation across <strong>Cyber Security</strong>, <strong>GIS</strong>, <strong>Data Science</strong>, <strong>Artificial Intelligence</strong>, <strong>IoT</strong>, <strong>Reality (AR/VR/MR)</strong>, and <strong>Educational Technology</strong>. My work spans securing digital infrastructures, geospatial data analysis, AI-driven solutions, connected systems, immersive realities, and transforming education through technology. I partner with Arizona State University, Mastercard Foundation, and national bodies to advance these fields from Ethiopia to the global stage.</p>
     </div>
 </div>
 
-<footer class="text-center">
-    <p class="mb-1"><i class="fas fa-crown me-2"></i> Tadesse Birara Akele — Committed to academic excellence, research, and digital inclusion</p>
-    <p class="small opacity-75">© 2025 Wollo University | eLearning Directorate | Updated 2026</p>
+<!-- Footer -->
+<footer class="text-center" role="contentinfo">
+    <p class="mb-1"><i class="fas fa-crown me-2"></i> Tadesse Birara Akele &mdash; Committed to academic excellence, research, and digital inclusion</p>
+    <p class="small opacity-75 mb-0">&copy; 2025 Wollo University | eLearning Directorate | Updated 2026</p>
 </footer>
 
+<!-- Back to Top -->
+<button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
 <!-- Modals -->
-<div class="modal fade" id="academicModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">🎓 Academic Background</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">Tadesse holds an MSc in Computer Networks and Communications from Wollo University with a cGPA of 3.92/4.00 (Very Great Distinction) and a BSc in Information Systems from Mekelle University with cGPA 3.76/4.00 (Very Great Distinction).</div><div class="modal-footer"><button class="btn btn-sm btn-outline-success" data-bs-dismiss="modal">Close</button></div></div></div>
+<div class="modal fade" id="academicModal" tabindex="-1" aria-hidden="true" aria-labelledby="academicModalLabel">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="academicModalLabel"><i class="fas fa-graduation-cap me-2"></i>Academic Background</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">Tadesse holds an MSc in Computer Networks and Communications from Wollo University with a cGPA of 3.92/4.00 (Very Great Distinction) and a BSc in Information Systems from Mekelle University with cGPA 3.76/4.00 (Very Great Distinction).</div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-outline-success" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="modal fade" id="impactModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">⚡ Professional Impact</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">As Director of eLearning Administration at Wollo University, Tadesse leads university-wide digital transformation, training thousands of instructors and students in online pedagogy in partnership with Arizona State University, Ministry of Education, and Mastercard Foundation.</div><div class="modal-footer"><button class="btn btn-sm btn-outline-success" data-bs-dismiss="modal">Close</button></div></div></div>
+<div class="modal fade" id="impactModal" tabindex="-1" aria-hidden="true" aria-labelledby="impactModalLabel">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="impactModalLabel"><i class="fas fa-bolt me-2"></i>Professional Impact</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">As Director of eLearning Administration at Wollo University, Tadesse leads university-wide digital transformation, training thousands of instructors and students in online pedagogy in partnership with Arizona State University, Ministry of Education, and Mastercard Foundation.</div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-outline-success" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="modal fade" id="researchModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">📚 Research & Publications</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">Tadesse has published in Springer, Wiley (Scopus indexed), and top conferences. His research includes Ethiopic Cryptography, deep learning for Amharic texts, novel encryption schemes, and traffic accident prediction.</div><div class="modal-footer"><button class="btn btn-sm btn-outline-success" data-bs-dismiss="modal">Close</button></div></div></div>
+<div class="modal fade" id="researchModal" tabindex="-1" aria-hidden="true" aria-labelledby="researchModalLabel">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="researchModalLabel"><i class="fas fa-flask me-2"></i>Research &amp; Publications</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">Tadesse has published in Springer, Wiley (Scopus indexed), and top conferences. His research includes Ethiopic Cryptography, deep learning for Amharic texts, novel encryption schemes, and traffic accident prediction.</div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-outline-success" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Active menu highlight
-    const sections = document.querySelectorAll("section, div[id]");
-    const navLinks = document.querySelectorAll(".nav-link");
-    window.addEventListener("scroll", () => {
-        let current = "";
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 120;
-            if (pageYOffset >= sectionTop) current = section.getAttribute("id");
+    (function() {
+        const sections = document.querySelectorAll("section, div[id]");
+        const navLinks = document.querySelectorAll(".nav-link:not(#themeToggle)");
+        let ticking = false;
+
+        window.addEventListener("scroll", () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    let current = "";
+                    const scrollPos = window.pageYOffset + 120;
+                    sections.forEach(section => {
+                        if (section.offsetTop <= scrollPos) {
+                            current = section.getAttribute("id");
+                        }
+                    });
+                    navLinks.forEach(link => {
+                        link.classList.toggle("active", link.getAttribute("href") === `#${current}`);
+                    });
+                    ticking = false;
+                });
+                ticking = true;
+            }
         });
-        navLinks.forEach(link => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === `#${current}`) link.classList.add("active");
+
+        const backToTop = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => {
+            backToTop.classList.toggle("show", window.pageYOffset > 400);
         });
-    });
+        backToTop.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        const themeToggle = document.getElementById("themeToggle");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+        const savedTheme = localStorage.getItem("theme");
+        const icon = themeToggle.querySelector("i");
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute("data-theme", theme);
+            localStorage.setItem("theme", theme);
+            icon.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
+        }
+
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else if (prefersDark.matches) {
+            setTheme("dark");
+        }
+
+        themeToggle.addEventListener("click", () => {
+            const current = document.documentElement.getAttribute("data-theme");
+            setTheme(current === "dark" ? "light" : "dark");
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+
+        document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    })();
 </script>
 </body>
 </html>
